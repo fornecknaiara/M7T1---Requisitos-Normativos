@@ -1,6 +1,11 @@
 import streamlit as st
 import json
-import google.generativeai as genai
+try:
+    import google.generativeai as genai
+except ModuleNotFoundError:
+    genai = None
+    st.error("Módulo 'google.generativeai' não encontrado. Instale as dependências com `pip install -r requirements.txt` ou adicione o arquivo requirements.txt no deploy do Streamlit.")
+    st.stop()
 from PIL import Image
 from fpdf import FPDF  # Recomenda-se: pip install fpdf2
 import io
