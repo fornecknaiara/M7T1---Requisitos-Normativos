@@ -60,6 +60,30 @@ def attempt_generate_content(model, conteudo_requisicao, max_retries=3):
             raise
     raise RuntimeError("Não foi possível completar a requisição após várias tentativas por limite de quota.")
 
+
+def generate_content_with_fallback(model_names, conteudo_requisicao, temperature):
+    last_exception = None
+    for model_name in model_names:
+        try:
+            model = genai.GenerativeModel(
+                model_name=model_name,
+                generation_config={
+                    "response_mime_type": "application/json",
+                    "response_schema": list[RequisitoAnalise],
+                    "temperature": temperature,
+                }
+            )
+            response = attempt_generate_content(model, conteudo_requisicao)
+            return response, model_name
+        except Exception as e:
+            texto = str(e).lower()
+            if 'quota exceeded' in texto or '429' in texto or 'rate limit' in texto or 'rate_limit' in texto:
+                st.warning(f"Modelo {model_name} ficou sem quota. Tentando o próximo modelo disponível...")
+                last_exception = e
+                continue
+            raise
+    raise RuntimeError("Todos os modelos disponíveis esgotaram a quota ou falharam.") from last_exception
+
 class PDFReport(FPDF):
     def __init__(self, norma_nome):
         super().__init__()
@@ -255,7 +279,10 @@ else:
                     if images_to_analyze:
                         try:
                             conteudo_requisicao = [prompt] + images_to_analyze
-                            response = attempt_generate_content(model, conteudo_requisicao)
+                            modelo_tentativas = [model_choice] + [m for m in modelos_disponiveis if m != model_choice]
+                            response, usado_modelo = generate_content_with_fallback(modelo_tentativas, conteudo_requisicao, temp_input)
+                            if usado_modelo != model_choice:
+                                st.info(f"Usando modelo alternativo {usado_modelo} após quota do modelo selecionado.")
                             text = getattr(response, 'text', None)
                             if text is not None:
                                 resultados_temporarios[file.name] = json.loads(text.strip())
