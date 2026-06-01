@@ -9,6 +9,7 @@ except ModuleNotFoundError:
 from PIL import Image
 from fpdf import FPDF  # Recomenda-se: pip install fpdf2
 import io
+import time
 from pdf2image import convert_from_bytes
 import typing_extensions as typing
 
@@ -19,7 +20,6 @@ st.set_page_config(
     layout="wide"
 )
 
-from PIL import Image
 logo = Image.open("logo.png")
 st.image(logo, width=120)
 
@@ -44,6 +44,21 @@ def load_requirements(nome_arquivo):
     except FileNotFoundError:
         st.error(f"Arquivo '{nome_arquivo}' não encontrado na pasta do projeto. Certifique-se de que o arquivo JSON está presente.")
         return None
+
+
+def attempt_generate_content(model, conteudo_requisicao, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return model.generate_content(conteudo_requisicao)
+        except Exception as e:
+            texto = str(e).lower()
+            if 'quota exceeded' in texto or '429' in texto or 'rate limit' in texto or 'rate_limit' in texto:
+                wait = 2 ** attempt
+                st.warning(f"Quota excedida na tentativa {attempt+1}/{max_retries}. Re-tentando em {wait}s...")
+                time.sleep(wait)
+                continue
+            raise
+    raise RuntimeError("Não foi possível completar a requisição após várias tentativas por limite de quota.")
 
 class PDFReport(FPDF):
     def __init__(self, norma_nome):
@@ -134,26 +149,19 @@ with st.sidebar:
     
     modelos_disponiveis = ["gemini-1.5-flash", "gemini-2.0-flash"]
     
-    genai_ready = False
     if api_key_input:
+        genai.configure(api_key=api_key_input)
         try:
-            genai.configure(api_key=api_key_input)
-            genai_ready = True
             modelos_dinamicos = []
-            try:
-                for m in genai.list_models():
-                    if 'generateContent' in getattr(m, 'supported_generation_methods', []):
-                        nome_limpo = getattr(m, 'name', '').replace('models/', '')
-                        if 'flash' in nome_limpo:
-                            modelos_dinamicos.append(nome_limpo)
-                if modelos_dinamicos:
-                    modelos_disponiveis = sorted(list(set(modelos_dinamicos)))
-            except Exception as e:
-                st.warning("Não foi possível listar modelos dinamicamente. Continuando com valores padrão.")
-                st.info(str(e))
-        except Exception as e:
-            st.error("⚠️ Erro ao configurar a Chave API. Verifique se a chave está correta.")
-            st.exception(e)
+            for m in genai.list_models():
+                if 'generateContent' in m.supported_generation_methods:
+                    nome_limpo = m.name.replace('models/', '')
+                    if 'flash' in nome_limpo:
+                        modelos_dinamicos.append(nome_limpo)
+            if modelos_dinamicos:
+                modelos_disponiveis = sorted(list(set(modelos_dinamicos)))
+        except Exception:
+            st.error("⚠️ Erro: Verifique sua Chave API.")
 
     model_choice = st.selectbox("Modelo LLM", modelos_disponiveis)
     
@@ -246,30 +254,15 @@ else:
                     
                     if images_to_analyze:
                         try:
-                            if not genai_ready:
-                                st.error("Chave API não configurada corretamente — análise não pode ser executada.")
-                                continue
-
                             conteudo_requisicao = [prompt] + images_to_analyze
-                            response = model.generate_content(conteudo_requisicao)
-
-                            # Response pode variar; tentar decodificar com segurança
-                            try:
-                                resultados = json.loads(getattr(response, 'text', '') or response)
-                            except Exception:
-                                try:
-                                    resultados = json.loads(response.text.strip())
-                                except Exception as e_inner:
-                                    st.error(f"Resposta da API inesperada para {file.name}.")
-                                    st.exception(e_inner)
-                                    resultados = None
-
-                            if resultados is not None:
-                                resultados_temporarios[file.name] = resultados
+                            response = attempt_generate_content(model, conteudo_requisicao)
+                            text = getattr(response, 'text', None)
+                            if text is not None:
+                                resultados_temporarios[file.name] = json.loads(text.strip())
                             else:
-                                st.error(f"Não foi possível obter resultados válidos para {file.name}.")
+                                resultados_temporarios[file.name] = json.loads(response)
                         except Exception as e:
-                            st.error(f"Erro na análise de IA do arquivo {file.name}:")
+                            st.error(f"Erro na análise de IA do arquivo {file.name}: {e}")
                             st.exception(e)
                     
                     progresso_bar.progress((idx + 1) / len(uploaded_files))
