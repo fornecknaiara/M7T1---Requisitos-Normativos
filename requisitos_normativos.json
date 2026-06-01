@@ -1,0 +1,116 @@
+{
+  "norma": "NBR 6492",
+  "titulo_projeto": "Representação de Projetos de Arquitetura",
+  "requisitos": [
+    {
+      "id": 1,
+      "item": "Preenchimento do Carimbo (Selo de Identificação)",
+      "descricao": "O carimbo é o 'RG' do projeto arquitetônico. Identifica o desenho, autor, data e validade.",
+      "recomendacao_llm": "Verifique no canto inferior direito: cliente, autor (CAU/CREA), título, escala, data, numeração e revisões.",
+      "criterios": {
+        "atendido": "Todos os dados obrigatórios preenchidos.",
+        "parcialmente": "Carimbo presente, mas omite dados não críticos (ex: revisões).",
+        "nao_atendido": "Carimbo ausente ou sem dados críticos (autor, id, folha)."
+      }
+    },
+    {
+      "id": 2,
+      "item": "Indicação do Norte Geográfico",
+      "descricao": "Crucial para conforto térmico. Deve estar claro nas plantas de implantação.",
+      "recomendacao_llm": "Busque o símbolo do Norte na Planta de Situação, Locação e Cobertura.",
+      "criterios": {
+        "atendido": "Norte indicado em todas as plantas de implantação/situação e cobertura.",
+        "parcialmente": "Presente em apenas uma planta ou símbolo confuso.",
+        "nao_atendido": "Nenhuma indicação encontrada."
+      }
+    },
+    {
+      "id": 3,
+      "item": "Hierarquia das Linhas (Espessuras e Tipos)",
+      "descricao": "Diferenciação visual entre elementos cortados, em vista e ocultos.",
+      "recomendacao_llm": "Cortes: grossas (0.5-0.7mm). Vista: médias/finas. Projeções: tracejadas.",
+      "criterios": {
+        "atendido": "Diferenciação clara entre elementos cortados, vista e ocultos.",
+        "parcialmente": "Existe diferenciação, mas projeções não estão tracejadas ou há inconsistência.",
+        "nao_atendido": "Desenho monótono, sem variação de espessura."
+      }
+    },
+    {
+      "id": 4,
+      "item": "Cotagem Adequada (Dimensões)",
+      "descricao": "Medidas exatas para execução sem necessidade de escalímetro na obra.",
+      "recomendacao_llm": "Textos acima da linha, em metros. Devem existir cotas parciais e totais.",
+      "criterios": {
+        "atendido": "Cotas totais e parciais presentes, legíveis e organizadas.",
+        "parcialmente": "Presentes, mas incompletas ou cruzando textos.",
+        "nao_atendido": "Ausência de cotas que impeça a execução."
+      }
+    },
+    {
+      "id": 5,
+      "item": "Indicação de Níveis (Altimetria)",
+      "descricao": "Informa a altura de ambientes em relação ao nível zero.",
+      "recomendacao_llm": "Plantas: símbolo circular. Cortes: seta. Indicar N.O. (osso) ou N.A. (acabado).",
+      "criterios": {
+        "atendido": "Símbolos corretos em plantas e cortes com valores em todos os ambientes.",
+        "parcialmente": "Indicados apenas em um tipo de desenho ou sem distinção N.A./N.O.",
+        "nao_atendido": "Nenhuma indicação altimétrica."
+      }
+    },
+    {
+      "id": 6,
+      "item": "Identificação dos Ambientes",
+      "descricao": "Nomeação da função e área útil de cada espaço.",
+      "recomendacao_llm": "Texto centralizado com nome (ex: SALA) e área (ex: A= 15,00 m²).",
+      "criterios": {
+        "atendido": "Todos os cômodos possuem nome e área útil informada.",
+        "parcialmente": "Nomes presentes, mas sem áreas ou faltam em alguns cômodos.",
+        "nao_atendido": "Ambientes vazios sem identificação."
+      }
+    },
+    {
+      "id": 7,
+      "item": "Representação e Codificação de Esquadrias",
+      "descricao": "Marcação padronizada de portas e janelas vinculada a quadros resumos.",
+      "recomendacao_llm": "Códigos (P1, J1), arcos de abertura em portas e peitoris em janelas.",
+      "criterios": {
+        "atendido": "Codificação completa, arcos de abertura e medidas de peitoril presentes.",
+        "parcialmente": "Codificadas, mas faltam peitoris ou arcos de abertura.",
+        "nao_atendido": "Desenhadas sem codificação ou informação dimensional."
+      }
+    },
+    {
+      "id": 8,
+      "item": "Indicação de Cortes e Fachadas",
+      "descricao": "Indicação de onde os cortes verticais foram extraídos.",
+      "recomendacao_llm": "Linhas de corte com setas de direção e letras/números (A-A, 1-1).",
+      "criterios": {
+        "atendido": "Linhas presentes com direção e desenhos correspondentes nomeados.",
+        "parcialmente": "Linhas presentes mas sem direção ou nomes divergentes.",
+        "nao_atendido": "Nenhuma linha de indicação de corte na planta baixa."
+      }
+    },
+    {
+      "id": 9,
+      "item": "Hachuras e Convenções de Materiais",
+      "descricao": "Texturas padronizadas para concreto, alvenaria, madeira, etc.",
+      "recomendacao_llm": "Alvenaria cortada preenchida, áreas molhadas com quadrícula (piso).",
+      "criterios": {
+        "atendido": "Aplicação correta em elementos de corte e pisos com legenda se necessário.",
+        "parcialmente": "Hachuras nos cortes mas ausentes em pisos ou sem legenda.",
+        "nao_atendido": "Nenhuma hachura utilizada."
+      }
+    },
+    {
+      "id": 10,
+      "item": "Quadros de Áreas e Notas Gerais",
+      "descricao": "Resumo matemático: taxas, coeficientes e áreas totais.",
+      "recomendacao_llm": "Localizado junto à situação. Deve conter: Área do Terreno, Construída, TO e CA.",
+      "criterios": {
+        "atendido": "Quadro completo com somatórias e índices urbanísticos.",
+        "parcialmente": "Quadro presente mas com dados faltantes (ex: sem índices).",
+        "nao_atendido": "Ausência total de tabelas de áreas."
+      }
+    }
+  ]
+}

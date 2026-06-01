@@ -1,0 +1,116 @@
+{
+  "norma": "NBR 9050:2020",
+  "titulo_projeto": "Acessibilidade a Edificações, Mobiliário, Espaços e Equipamentos Urbanos",
+  "requisitos": [
+    {
+      "id": 1,
+      "item": "Módulo de Referência (M.R.) e Rotas Acessíveis",
+      "descricao": "Garantia de espaço mínimo para manobra, deslocamento e posicionamento de pessoas em cadeiras de rodas.",
+      "recomendacao_llm": "Verifique a projeção de 0,80m x 1,20m no piso. Assegure rotas contínuas com largura mínima de 1,20m (ideal 1,50m) livres de obstáculos.",
+      "criterios": {
+        "atendido": "Rotas acessíveis contínuas com largura correta e áreas de manobra (giro de 180° ou 360°) grafadas onde necessário.",
+        "parcialmente": "Há rota acessível, mas estrangulamentos pontuais abaixo de 1,20m ou falta representação gráfica do M.R. em áreas críticas.",
+        "nao_atendido": "Rotas obstruídas, larguras inferiores a 0,90m ou ausência total de previsão de fluxo acessível."
+      }
+    },
+    {
+      "id": 2,
+      "item": "Dimensionamento e Inclinação de Rampas",
+      "descricao": "Cálculo exato da inclinação de rampas para garantir a autonomia e segurança na circulação vertical.",
+      "recomendacao_llm": "Calcular a inclinação máxima (i = 8,33%). Verificar se há patamares de descanso (mínimo 1,20m) a cada 50m de desnível.",
+      "criterios": {
+        "atendido": "Inclinação máxima respeita os 8,33% (ou exceções de reforma até 10%) com largura mínima de 1,20m e patamares corretos.",
+        "parcialmente": "A inclinação está correta, mas faltam patamares intermediários ou a largura é inferior ao regulamentado.",
+        "nao_atendido": "Rampas com inclinação superior a 10% ou largura que impossibilite a passagem de uma cadeira de rodas."
+      }
+    },
+    {
+      "id": 3,
+      "item": "Sinalização Tátil de Alerta e Direcional (Piso Tátil)",
+      "descricao": "Orientação e segurança para pessoas com deficiência visual ou baixa visão através do contraste cromático e tátil.",
+      "recomendacao_llm": "Buscar a paginação do piso tátil de alerta em rebaixamentos de calçada, início/fim de rampas/escadas e portas de elevadores. Direcional em rotas amplas.",
+      "criterios": {
+        "atendido": "Sinalização tátil de alerta e direcional aplicada nos locais obrigatórios com paginação e larguras corretas (0,25m a 0,60m).",
+        "parcialmente": "Piso tátil indicado no projeto, mas sem diferenciação clara entre alerta/direcional ou interrompido antes do obstáculo.",
+        "nao_atendido": "Ausência total de indicação de sinalização tátil no piso."
+      }
+    },
+    {
+      "id": 4,
+      "item": "Sanitários Acessíveis (Layout e Barras)",
+      "descricao": "Dimensionamento de sanitários que permitam a transferência, giro do usuário e instalação de barras de apoio.",
+      "recomendacao_llm": "Verificar área para giro de 360° (diâmetro de 1,50m), bacia com abertura frontal (se uso público), posicionamento e cotas das barras de apoio.",
+      "criterios": {
+        "atendido": "Sanitário com dimensões corretas, raio de giro livre, transferência lateral garantida e detalhamento das barras de apoio.",
+        "parcialmente": "Espaço interno atende ao giro, mas a porta abre para dentro obstruindo o uso ou faltam os detalhes/cotas das barras.",
+        "nao_atendido": "Sanitário sem espaço para giro de uma cadeira de rodas ou sem previsão de acessórios de acessibilidade."
+      }
+    },
+    {
+      "id": 5,
+      "item": "Corrimãos e Guarda-Corpos",
+      "descricao": "Elementos de apoio contínuos em ambos os lados de rampas e escadas para auxílio na mobilidade.",
+      "recomendacao_llm": "Verificar corrimãos duplos (alturas de 0,70m e 0,92m) com prolongamento de 0,30m nas extremidades inicial e final.",
+      "criterios": {
+        "atendido": "Corrimãos em duas alturas nas escadas e rampas, contínuos, com extremidades arredondadas e prolongamento regulamentar.",
+        "parcialmente": "Corrimão presente em apenas uma altura ou sem o prolongamento de 0,30m nas cabeceiras.",
+        "nao_atendido": "Ausência de corrimão ou guarda-corpo em desníveis que necessitam do elemento."
+      }
+    },
+    {
+      "id": 6,
+      "item": "Vagas de Estacionamento Exclusivas",
+      "descricao": "Reserva e dimensionamento de vagas para veículos que transportem pessoas com deficiência ou idosos.",
+      "recomendacao_llm": "Verificar a faixa de circulação adicional (espaço de transferência de 1,20m) pintada entre as vagas e o símbolo internacional de acesso (SIA).",
+      "criterios": {
+        "atendido": "Quantidade de vagas conforme legislação, com faixa de transferência compartilhada ou individual e sinalização vertical/horizontal.",
+        "parcialmente": "Vagas dimensionadas corretamente, mas sem a faixa de transferência em amarelo ou sem sinalização vertical indicada.",
+        "nao_atendido": "Ausência de demarcação de vagas acessíveis no projeto de implantação/garagem."
+      }
+    },
+    {
+      "id": 7,
+      "item": "Rebaixamento de Calçadas (Faixas de Travessia)",
+      "descricao": "Garantia de transição suave e sem degraus entre a calçada e o leito carroçável.",
+      "recomendacao_llm": "Verificar nas plantas de situação/locação a inclinação do rebaixamento (máximo 8,33%) e a concordância com o nível da rua (degrau zero).",
+      "criterios": {
+        "atendido": "Rebaixamentos com abas laterais inclinadas, sem obstruir a faixa livre da calçada e com piso tátil de alerta.",
+        "parcialmente": "Rebaixamento indicado, mas invade a faixa livre de circulação do pedestre ou falta o piso tátil na transição.",
+        "nao_atendido": "Degraus na transição calçada-rua em locais de travessia de pedestres."
+      }
+    },
+    {
+      "id": 8,
+      "item": "Esquadrias e Portas na Rota Acessível",
+      "descricao": "Garantia de vão livre mínimo e esforço reduzido para abertura de portas ao longo do fluxo.",
+      "recomendacao_llm": "Verificar se o vão livre das portas é de no mínimo 0,80m (folha de 82cm ou maior) e se há área de aproximação nas laterais.",
+      "criterios": {
+        "atendido": "Todas as portas da rota acessível com vão livre >= 0,80m e maçanetas tipo alavanca.",
+        "parcialmente": "Portas com vão correto, mas sem espaço físico lateral para aproximação do cadeirante fazer a abertura.",
+        "nao_atendido": "Portas com vão livre inferior a 0,80m na rota principal ou uso de maçanetas tipo bola."
+      }
+    },
+    {
+      "id": 9,
+      "item": "Mobiliário Urbanístico e Balcões de Atendimento",
+      "descricao": "Adaptação de balcões e mesas para permitir a aproximação frontal de usuários em cadeiras de rodas.",
+      "recomendacao_llm": "Garantir trecho de balcão com altura entre 0,75m e 0,85m, com recuo inferior livre para as pernas (altura livre de 0,73m).",
+      "criterios": {
+        "atendido": "Balcão de atendimento com trecho rebaixado acessível e nicho inferior totalmente livre.",
+        "parcialmente": "Balcão rebaixado na altura correta, mas fechado na parte inferior, impedindo o encaixe da cadeira de rodas.",
+        "nao_atendido": "Balcões totalmente altos (acima de 1,00m) sem área adaptada para atendimento."
+      }
+    },
+    {
+      "id": 10,
+      "item": "Sinalização Visual e Escrita (Comunicação)",
+      "descricao": "Presença de elementos de identificação de espaços acessíveis e informações em Braille/relevo.",
+      "recomendacao_llm": "Buscar no projeto de comunicação visual a indicação do Símbolo Internacional de Acesso (SIA) e placas com leitura tátil próximas às portas.",
+      "criterios": {
+        "atendido": "Sinalização de portas e ambientes com texto, relevo e Braille nas alturas normatizadas (1,20m a 1,60m).",
+        "parcialmente": "Presença de placas de sinalização, mas sem especificação de Braille/relevo ou instaladas diretamente na folha da porta.",
+        "nao_atendido": "Ausência completa de sinalização de acessibilidade nos fluxos principais."
+      }
+    }
+  ]
+}

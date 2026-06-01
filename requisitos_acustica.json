@@ -1,0 +1,116 @@
+{
+  "norma": "NBR 15575:2021",
+  "titulo_projeto": "Desempenho Acústico em Edificações Habitacionais",
+  "requisitos": [
+    {
+      "id": 1,
+      "item": "Isolamento Acústico de Fachadas (Ruído Aéreo Externo)",
+      "descricao": "Capacidade da vedação externa (paredes + janelas) de mitigar o ruído vindo da rua para os dormitórios.",
+      "recomendacao_llm": "Verificar a classe de ruído do entorno (I, II ou III). Exigir índice de redução sonora ponderado (D2m,nT,w) mínimo de 20 dB a 30 dB nos dormitórios.",
+      "criterios": {
+        "atendido": "Especificação de esquadrias e alvenarias que comprovadamente atingem a classe de isolamento exigida para o local.",
+        "parcialmente": "Paredes robustas especificadas, mas esquadrias simples (sem tratamento acústico) em zonas de alto ruído.",
+        "nao_atendido": "Ausência de memorial descritivo acústico ou uso de componentes sabidamente insuficientes para o entorno."
+      }
+    },
+    {
+      "id": 2,
+      "item": "Isolamento entre Dormitórios e Áreas Comuns (Ruído Aéreo Interiores)",
+      "descricao": "Isolamento entre as unidades habitacionais e as zonas de circulação comum, como corredores e halls.",
+      "recomendacao_llm": "Verificar se as paredes de geminação possuem índice de redução sonora (DnT,w) mínimo de 40 dB (se houver porta) ou 45 dB (sem porta).",
+      "criterios": {
+        "atendido": "Paredes divisórias detalhadas com espessura, blocos densos ou sistemas de drywall adequados para atingir os dB exigidos.",
+        "parcialmente": "Indicação de parede divisória comum sem detalhamento de massa (peso) ou sem tratamento nas caixas de tomada drywall.",
+        "nao_atendido": "Uso de blocos leves vazados ou drywalls simples sem isolamento interno entre o corredor e o dormitório."
+      }
+    },
+    {
+      "id": 3,
+      "item": "Isolamento entre Unidades Autônomas (Paredes Geminadas)",
+      "descricao": "Privacidade sonora entre duas propriedades/apartamentos diferentes na mesma edificação.",
+      "recomendacao_llm": "Buscar no projeto o índice DnT,w mínimo de 45 dB para paredes que dividem salas/cozinhas de unidades distintas.",
+      "criterios": {
+        "atendido": "Uso de sistemas de parede dupla, blocos estruturais preenchidos ou drywalls acústicos especificados em projeto.",
+        "parcialmente": "Sistema atende na teoria, mas o projeto permite tubulações hidráulicas embutidas na mesma parede, gerando pontes acústicas.",
+        "nao_atendido": "Uso de vedação simples de baixa gramatura sem qualquer reforço acústico entre apartamentos."
+      }
+    },
+    {
+      "id": 4,
+      "item": "Isolamento de Ruído de Impacto em Pisos",
+      "descricao": "Atenuação do som de passos, queda de objetos ou arrastar de móveis transmitidos pelo teto ao vizinho de baixo.",
+      "recomendacao_llm": "Verificar o nível de pressão sonora de impacto ponderado padrão (L'nT,w). O valor máximo permitido na laje entre unidades é de 80 dB (mínimo) a 55 dB (superior).",
+      "criterios": {
+        "atendido": "Especificação de lajes com espessura adequada associadas a contrapisos flutuantes (com manta acústica) ou revestimentos resilientes.",
+        "parcialmente": "Laje dimensionada apenas estruturalmente, contando exclusivamente com o piso acabado (ex: porcelanato direto na laje) sem amortecimento.",
+        "nao_atendido": "Lajes finas (menores que 10cm) combinadas com pisos rígidos, ultrapassando facilmente o limite de 80 dB."
+      }
+    },
+    {
+      "id": 5,
+      "item": "Ruído de Impacto em Coberturas Não Acessíveis",
+      "descricao": "Mitigação do ruído de chuvas fortes, granizo ou manutenções na cobertura diretamente acima de dormitórios.",
+      "recomendacao_llm": "Analisar o sistema de cobertura (telha metálica, fibrocimento ou laje exposta) e a exigência de L'nT,w máximo de 80 dB.",
+      "criterios": {
+        "atendido": "Uso de telhas termoacústicas (sanduíche), mantas de subcobertura ou forro de gesso estruturado com lã mineral sob a telha.",
+        "parcialmente": "Presença de forro de gesso comum, mas com telha metálica simples sem nenhum elemento amortecedor de impacto.",
+        "nao_atendido": "Apenas telha simples sobre a estrutura, sem forro ou qualquer barreira acústica instalada."
+      }
+    },
+    {
+      "id": 6,
+      "item": "Isolamento Acústico de Sistemas Hidráulicos e de Esgoto",
+      "descricao//": "Prevenção do ruído gerado por descargas, queda de água em prumadas e funcionamento de bombas.",
+      "recomendacao_llm": "Verificar o traçado de tubulações de esgoto. Evitar a passagem direta sobre tetos de dormitórios e exigir isolamento nas prumadas (shafts).",
+      "criterios": {
+        "atendido": "Shafts fechados com alvenaria/gesso pesado, uso de tubulações de esgoto insonorizadas (especiais) ou envelopadas com lã de rocha.",
+        "parcialmente": "Tubulações fora dos dormitórios, mas shafts fechados com placas simples de drywall sem isolamento interno, propagando ruído de descarga.",
+        "nao_atendido": "Tubulações de esgoto aparentes ou passando por dentro do forro de dormitórios sem nenhuma proteção."
+      }
+    },
+    {
+      "id": 7,
+      "item": "Ruído de Equipamentos Prediais Coletivos",
+      "descricao": "Controle do ruído contínuo ou intermitente vindo de elevadores, geradores, bombas d'água e subestações.",
+      "recomendacao_llm": "Verificar no projeto de instalações se há fixação de motores com coxins antivibratórios e se as paredes destas salas são reforçadas.",
+      "criterios": {
+        "atendido": "Casas de máquinas e áreas de bombas isoladas das zonas residenciais por vazios estruturais ou paredes duplas, com amortecedores mecânicos.",
+        "parcialmente": "Equipamentos distantes dos quartos, mas paredes limítrofes sem tratamento de isolamento pesado.",
+        "nao_atendido": "Quarto de dormir geminado à caixa de elevador ou sala de bombas sem nenhuma junta de dilatação ou barreira acústica."
+      }
+    },
+    {
+      "id": 8,
+      "item": "Tratamento de Frestas e Juntas Perimetrais",
+      "descricao": "Bloqueio de vazamentos sonoros em encontros estruturais, caixas de luz e bases de esquadrias.",
+      "recomendacao_llm": "Identificar se há especificação de selantes acústicos em juntas de dilatação e espuma expansiva/grauteamento no contorno de portas e janelas.",
+      "criterios": {
+        "atendido": "Indicação clara em projeto do uso de mastiques e selantes resilientes nas frestas de montagem de painéis e esquadrias.",
+        "parcialmente": "Esquadria acústica especificada, mas sem detalhamento do tipo de selagem perimetral na instalação.",
+        "nao_atendido": "Inexistência de previsão de vedação de frestas estruturais, deixando caminhos livres para o ar (e o som)."
+      }
+    },
+    {
+      "id": 9,
+      "item": "Tempo de Reverberação em Áreas Comuns",
+      "descricao": "Controle do eco e da inteligibilidade da fala em ambientes como salões de festas e halls compartilhados.",
+      "recomendacao_llm": "Avaliar se há indicação de materiais fonoabsorventes (forros perfurados, painéis de madeira acústica, nuvens) no teto ou paredes.",
+      "criterios": {
+        "atendido": "Especificação técnica de forro ou revestimento com coeficiente de absorção (NRC) adequado para o volume do ambiente.",
+        "parcialmente": "Ambiente possui alguma paginação de gesso acartonado comum, mas sem especificação de material poroso/absorvente.",
+        "nao_atendido": "Superfícies 100% lisas e reflexivas (vidro, porcelanato, gesso liso) em grandes áreas comuns fechadas."
+      }
+    },
+    {
+      "id": 10,
+      "item": "Comprovação de Desempenho (Simulação ou Ensaio)",
+      "descricao": "Apresentação de relatórios que garantam que as composições propostas atingem as metas da norma.",
+      "recomendacao_llm": "Exigir no memorial de desempenho as tabelas de ensaios de laboratório dos fabricantes ou modelos matemáticos de simulação acústica.",
+      "criterios": {
+        "atendido": "Memorial de desempenho acústico anexo contendo os laudos de todos os sistemas construtivos utilizados.",
+        "parcialmente": "Indicação dos valores em dB nas tabelas de projeto, mas sem citar os laudos de origem ou referências dos ensaios.",
+        "nao_atendido": "Nenhum dado de comprovação teórica ou experimental apresentado no escopo do projeto."
+      }
+    }
+  ]
+}
