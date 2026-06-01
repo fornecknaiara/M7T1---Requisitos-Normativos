@@ -14,10 +14,14 @@ import typing_extensions as typing
 
 # ---- 1. CONFIGURAÇÃO DA PÁGINA ----
 st.set_page_config(
-    page_title="BRALLI — Multi-Norma Batch Analysis",
+    page_title="ZIGURAT — Multi-Norma Batch Analysis",
     page_icon="logo.png", 
     layout="wide"
 )
+
+from PIL import Image
+logo = Image.open("logo.png")
+st.image(logo, width=120)
 
 # --- 2. MEMÓRIA DA SESSÃO --- 
 if 'uploader_key' not in st.session_state:
