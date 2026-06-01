@@ -134,19 +134,26 @@ with st.sidebar:
     
     modelos_disponiveis = ["gemini-1.5-flash", "gemini-2.0-flash"]
     
+    genai_ready = False
     if api_key_input:
-        genai.configure(api_key=api_key_input)
         try:
+            genai.configure(api_key=api_key_input)
+            genai_ready = True
             modelos_dinamicos = []
-            for m in genai.list_models():
-                if 'generateContent' in m.supported_generation_methods:
-                    nome_limpo = m.name.replace('models/', '')
-                    if 'flash' in nome_limpo:
-                        modelos_dinamicos.append(nome_limpo)
-            if modelos_dinamicos:
-                modelos_disponiveis = sorted(list(set(modelos_dinamicos)))
-        except Exception:
-            st.error("⚠️ Erro: Verifique sua Chave API.")
+            try:
+                for m in genai.list_models():
+                    if 'generateContent' in getattr(m, 'supported_generation_methods', []):
+                        nome_limpo = getattr(m, 'name', '').replace('models/', '')
+                        if 'flash' in nome_limpo:
+                            modelos_dinamicos.append(nome_limpo)
+                if modelos_dinamicos:
+                    modelos_disponiveis = sorted(list(set(modelos_dinamicos)))
+            except Exception as e:
+                st.warning("Não foi possível listar modelos dinamicamente. Continuando com valores padrão.")
+                st.info(str(e))
+        except Exception as e:
+            st.error("⚠️ Erro ao configurar a Chave API. Verifique se a chave está correta.")
+            st.exception(e)
 
     model_choice = st.selectbox("Modelo LLM", modelos_disponiveis)
     
@@ -239,11 +246,31 @@ else:
                     
                     if images_to_analyze:
                         try:
+                            if not genai_ready:
+                                st.error("Chave API não configurada corretamente — análise não pode ser executada.")
+                                continue
+
                             conteudo_requisicao = [prompt] + images_to_analyze
                             response = model.generate_content(conteudo_requisicao)
-                            resultados_temporarios[file.name] = json.loads(response.text.strip())
+
+                            # Response pode variar; tentar decodificar com segurança
+                            try:
+                                resultados = json.loads(getattr(response, 'text', '') or response)
+                            except Exception:
+                                try:
+                                    resultados = json.loads(response.text.strip())
+                                except Exception as e_inner:
+                                    st.error(f"Resposta da API inesperada para {file.name}.")
+                                    st.exception(e_inner)
+                                    resultados = None
+
+                            if resultados is not None:
+                                resultados_temporarios[file.name] = resultados
+                            else:
+                                st.error(f"Não foi possível obter resultados válidos para {file.name}.")
                         except Exception as e:
-                            st.error(f"Erro na análise de IA do arquivo {file.name}: {e}")
+                            st.error(f"Erro na análise de IA do arquivo {file.name}:")
+                            st.exception(e)
                     
                     progresso_bar.progress((idx + 1) / len(uploaded_files))
                 
